@@ -5,7 +5,7 @@ const fieldFilter = {
   info: 0,
   'data.info.expire': 0,
   'data.info.year': 0,
-  'data.info': 0,
+  'data.list': 0,
 }
 
 // 根据 id 查找资源
@@ -81,7 +81,7 @@ exports.findResourceByKeyword = async (req, res, next) => {
         resources.unshift(resource)
       }
     })
-    res.json(resources)
+    res.json([...new Set(resources)])
   } catch (err) {
     next(err)
   }
